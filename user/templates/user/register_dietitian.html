@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Register Dietitian</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ dietitian_form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+
+    {% if user_form.errors %}
+        <div class="errors">
+            <h2>Form Errors:</h2>
+            <ul>
+                {% for field, errors in user_form.errors.items %}
+                    <li>{{ field }}: {{ errors|striptags }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endblock %}
+
+

@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Home Page</h1>
+
+    <ul>
+    <a href="{% url 'list_dietitians' %}">List Dietitians</a>
+    </ul>
+
+    <ul>
+    <a href="{% url 'list_practice_locations' %}">List Practice Locations</a>
+    </ul>
+{% endblock %}

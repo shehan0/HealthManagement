@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>List of Practice Locations</h1>
+    <ul>
+        {% for country, locations in locations_by_country.items %}
+{#        {% for location in practice_locations %}#}
+            <h2>{{ country }}</h2>
+            <ul>
+                {% for location in locations %}
+                <li>
+                    <strong>Approved? :</strong> {{ location.is_approved }}<br>
+                    <strong>Dietitian:</strong> {{ location.dietitian.user.username }}
+                    <br>
+                    <br>
+                    <strong>Address:</strong> {{ location.address }}<br>
+                    <strong>Latitude:</strong> {{ location.latitude }}<br>
+                    <strong>Longitude:</strong> {{ location.longitude }}<br>
+                    <strong>Email:</strong> {{ location.email }}<br>
+                    <strong>Phone Number:</strong> {{ location.phone_number }}<br>
+                    <strong>Website:</strong> <a href="{{ location.website }}">{{ location.website }}</a><br>
+
+                <hr>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% endfor %}
+    </ul>
+{% endblock %}

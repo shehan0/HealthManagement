@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Dietitians Directory</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Country of Practice</th>
+                <th>Phone Number</th>
+                <th>Practice Locations</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dietitian in dietitians %}
+                <tr>
+                    <td>{{ dietitian.user.first_name }}</td>
+                    <td>{{ dietitian.user.last_name }}</td>
+                    <td>{{ dietitian.country_of_practice }}</td>
+                    <td>{{ dietitian.phone_number }}</td>
+                    <td>
+                        <ul>
+                            {% for location in dietitian.locations.all %}
+                                <li>{{ location }} - {% if location.is_approved %} Approved {% else %} Not Approved {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
